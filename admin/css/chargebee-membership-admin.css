@@ -1,0 +1,44 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ /* Chargebee acount creation messgae */
+.cbm-create-acnt-msg{
+    vertical-align: middle;
+ 	line-height: 2;
+}
+
+/* Subscription table in Edit profile */
+.cbm-subscription-table{
+	width: 80%;
+	line-height: 2;
+	font-size: 0.9rem;
+	border-collapse: collapse;
+	border: 0.5px groove;
+}
+
+.cbm-subscription-table th {
+    border: 0.5px groove;
+}
+
+.cbm-subscription-table td{
+ 	border: 0.5px groove;
+    padding: 0 5px;
+}
+
+.cbm-edit-level textarea, .cbm-edit-level select {
+	width: 25em;
+}
+.cbm-add-level select {
+	width: 95%;
+}
+.cbm_restrict_options, .cbm_restrict_levels {
+	width: 100%;
+}
+
+.cbm_separator {
+	text-align: right;
+	font-weight: bold;
+	padding: 0;
+}
