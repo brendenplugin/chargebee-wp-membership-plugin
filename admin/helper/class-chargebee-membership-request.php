@@ -20,12 +20,6 @@ if ( ! class_exists( 'Chargebee_Membership_Request' ) ) {
 
 		}
 
-		public static function cb_plugin_name_get_version() {
-			$plugin_data = get_plugin_data( __FILE__ );
-			$plugin_version = $plugin_data['Version'];
-			return $plugin_version;
-		}
-
 		/**
 		 * Function to Authenticate key and site name and Import Current Plans/Products.
 		 *
@@ -38,7 +32,8 @@ if ( ! class_exists( 'Chargebee_Membership_Request' ) ) {
 		 * @return array|WP_Error   Response object from CB API
 		 */
 		public static function authorize_key( $api, $site ) {
-			$CB_PLUGIN_VERSION=self::cb_plugin_name_get_version();
+			global $CB_PLUGIN_VERSION;
+			global $wp_version;
 			$password = '';
 			$url      = "https://{$site}.chargebee.com/api/v2/plans";
 			$args     = array(
@@ -49,7 +44,7 @@ if ( ! class_exists( 'Chargebee_Membership_Request' ) ) {
 					'limit' => '100',
 				),
 				'sslverify' => true,
-				'User-Agent' => "CBWP-$CB_PLUGIN_VERSION",
+				'user-agent' => "CB/$CB_PLUGIN_VERSION/WP/$wp_version",
 			);
 			$response = wp_remote_get( $url, $args );
 
@@ -69,6 +64,8 @@ if ( ! class_exists( 'Chargebee_Membership_Request' ) ) {
 		 * @return mixed response of request.
 		 */
 		public static function chargebee_api_request( $url = '', $parameter = array(), $method = 'get' ) {
+			global $CB_PLUGIN_VERSION;
+                        global $wp_version;
 			$api      = self::get_key();
 			$site     = self::get_site();
 			$password = '';
@@ -80,6 +77,7 @@ if ( ! class_exists( 'Chargebee_Membership_Request' ) ) {
 						'Authorization' => 'Basic ' . base64_encode( "$api:$password" ),
 					),
 					'sslverify' => false,
+					'user-agent' => "CB/$CB_PLUGIN_VERSION/WP/$wp_version",
 				);
 				if ( ! empty( $parameter ) ) {
 					$args['body'] = $parameter;

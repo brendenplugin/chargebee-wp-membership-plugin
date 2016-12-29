@@ -63,6 +63,13 @@ if ( ! defined( 'CHARGEBEE_MEMBERSHIP_TABLE_USER_NOTIFICATION' ) ) {
 	define( 'CHARGEBEE_MEMBERSHIP_TABLE_USER_NOTIFICATION', $wpdb->prefix . 'cbm_user_notification' );
 }
 
+if ( ! function_exists( 'get_plugins' ) )
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+$plugin_folder = get_plugins( '/' . plugin_basename( dirname( __FILE__ ) ) );
+$plugin_file = basename( ( __FILE__ ) );
+global $CB_PLUGIN_VERSION;
+$CB_PLUGIN_VERSION = $plugin_folder[$plugin_file]['Version'];
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-chargebee-membership-activator.php
