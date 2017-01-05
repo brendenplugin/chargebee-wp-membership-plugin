@@ -77,6 +77,9 @@ $CB_PLUGIN_VERSION = $plugin_folder[$plugin_file]['Version'];
 function activate_chargebee_membership() {
         $CURRENT_VERSION=get_bloginfo('version');
         $MIN_VERSION=str_replace(".","",$CURRENT_VERSION);
+	if ($MIN_VERSION < 100){
+		$MIN_VERSION=$MIN_VERSION*10;
+	}
         if ( $MIN_VERSION < 450){
                 die("Need Wordpress Version > 4.5.0");
         }
