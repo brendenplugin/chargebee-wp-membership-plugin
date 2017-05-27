@@ -552,9 +552,9 @@ if ( ! class_exists( 'Chargebee_Membership_Webhook' ) ) {
                         if(! empty($plan['price'])){
                             $plan_price = intval( $plan['price'] ) / 100;
                         }
-                        if(empty($plan_price)){
-                            return false;
-                        }
+			else{
+				$plan_price=0;
+			}
                         
                         $wpdb->insert(
                              CHARGEBEE_MEMBERSHIP_TABLE_PRODUCT,
