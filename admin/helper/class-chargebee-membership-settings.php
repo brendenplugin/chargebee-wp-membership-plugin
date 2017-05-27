@@ -125,7 +125,7 @@ if ( ! class_exists( 'Chargebee_Membership_Settings' ) ) {
 
 
 			// Product page option.
-			//add_settings_field( 'cbm_product_page', __( 'Chargebee Pricing Page', 'chargebee-membership' ), array( $this, 'product_page_callback' ), 'cbm_pages', 'cbm_reserved_pages' );
+			add_settings_field( 'cbm_product_page', __( 'Chargebee Pricing Page', 'chargebee-membership' ), array( $this, 'product_page_callback' ), 'cbm_pages', 'cbm_reserved_pages' );
 
 			// Thank you page option.
 			add_settings_field( 'cbm_thankyou_page', __( 'Thank You Page', 'chargebee-membership' ), array( $this, 'thankyou_page_callback' ), 'cbm_pages', 'cbm_reserved_pages' );
